@@ -1,24 +1,27 @@
 import React from "react";
 
-import{
+import {
     BrowserRouter,
     Route,
     Routes
 } from "react-router-dom";
-import App from "../App";
-import BuscaCep from "../componentes/BuscaCepForm";
-import Cadastro from "../componentes/Cadastro";
-import Listagem from "../componentes/Listagem";
+import BuscaCep from "../components/BuscaCepForm";
+import Cadastro from "../components/Cadastro";
+import Listagem from "../components/Listagem";
 
-const AppRouter = () =>{
+const AppRouter = () => {
     return (
         <BrowserRouter>
-        <Routes>
-            <Route path= "buscacep" element= {<BuscaCep/>} />
-            <Route path= "cadastro" element= {<Cadastro/>} />
-            <Route path= "listagem" element= {<Listagem/>} />
+            <Routes>
+                <Route path="buscacep"
+                    element={<BuscaCep />} />
+                <Route path="cadastro"
+                    element={<Cadastro />} />
+                <Route path="listagem"
+                    element={<Listagem />} />
             </Routes>
-            </BrowserRouter>
-    )
+        </BrowserRouter>
+    );
 }
-export default AppRouter;
+
+export default AppRouter; 

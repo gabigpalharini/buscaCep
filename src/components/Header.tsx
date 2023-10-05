@@ -1,10 +1,12 @@
-import React from "react";
+import React from "react"; 
+
 import styles from "./Header.module.css"
+
 const Header = () => {
-    return(
+    return (
         <header className={styles.header}>
-            <h1>Buscador de Cep</h1>
-            </header>
+            <h1>Buscador de CEP</h1>
+        </header>
     );
 }
 

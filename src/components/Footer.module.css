@@ -1,13 +1,13 @@
-.footer{
+.footer { 
     height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
-    color: beige;
+    background-color: #282c34;
+    color: #fff;
 }
 
-.footer span{
+.footer span {
     font-weight: bold;
-    color:rgb(105, 178, 227);;
+    color: #61dafb;
 }

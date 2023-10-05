@@ -1,5 +1,5 @@
-export interface CepInterface{
-      cep: string;
-      localidade: string;
-      uf: string;
-    }
+export interface CepInterface {
+    cep: string; 
+    localidade: string; 
+    uf: string;
+}
