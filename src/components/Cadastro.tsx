@@ -11,7 +11,16 @@ const Cadastro = () => {
     const [email, setEmail] = useState<string>("");
     const [cpf, setCpf] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [nomeErro, setNomeErro] = useState<string>("")
+    const [cpfErro, setCpfErro] = useState<string>("")
+    const [emailErro, setEmailErro] = useState<string>("")
+    const [passwordErro, setPasswordErro] = useState<string>("")
+
     const cadastrarUsuario = (e: FormEvent) => {
+        setNomeErro("")
+        setCpfErro("")
+        setEmailErro("")
+        setPasswordErro("")
         e.preventDefault();
     
         const dados = {
@@ -23,15 +32,30 @@ const Cadastro = () => {
 
         console.log(dados)
 
-          axios.post('http://10.137.9.131:8000/api/store', dados,
+          axios.post('http://10.137.9.136:8000/api/store', dados,
           {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             }
           }).then(function(response){
-            window.location.href = "/listagem";
+            if(response.data.sucess === false){
+                 if ('nome' in response.data.error){
+                    setNomeErro(response.data.error.nome)
+                 }
+                 if ('cpf' in response.data.error){
+                    setCpfErro(response.data.error.cpf)
+                 }
+                 if ('email' in response.data.error){
+                    setEmailErro(response.data.error.email)
+                 }
+                 if ('password' in response.data.error){
+                    setPasswordErro(response.data.error.password)
+                 }
 
+            }else{
+            window.location.href = "/listagem"
+        }
           }).catch(function(error){
             console.log(error);
           })
@@ -68,26 +92,27 @@ const Cadastro = () => {
             <input type="text" name='nome' className='form-control' required
             onChange={handleState}
             />
-
+             <div className= 'text-danger' >{nomeErro}</div>
             </div>
             <div className='col-6'> 
             <label htmlFor="email" className='form-label'>E-mail</label>
             <input type="text" name='email' className='form-control' required
              onChange={handleState}/>
+           <div className= 'text-danger' >{emailErro}</div>
            
-
             </div>
             <div className='col-6'> 
             <label htmlFor="cpf" className='form-label'>cpf</label>
             <input type="text" name='cpf' className='form-control' required
              onChange={handleState}/>
-
+           <div className= 'text-danger' >{cpfErro}</div>
+            
             </div>
             <div className='col-6'> 
             <label htmlFor="password" className='form-label'>Senha</label>
             <input type="text" name='password' className='form-control' required
             onChange={handleState}/>
-            
+             <div className= 'text-danger' >{passwordErro}</div>
 
             <div className='col-12'> <button type='submit'className='bnt bnt-sucess bnt-sm'>Cadastrar</button>
                 </div>
